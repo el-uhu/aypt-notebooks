@@ -60,11 +60,15 @@ Wenn man einen Würfel oder eine Münze wirft, so hat diese ja auch Schwung und 
 # ╔═╡ ca167561-18a4-4997-981d-db3fb481dadf
 md"""
 ## Simulation
+
+Based on the following paper: [https://statweb.stanford.edu/~owen/courses/306a-1011/threesidedcoin_amstat.pdf](https://statweb.stanford.edu/~owen/courses/306a-1011/threesidedcoin_amstat.pdf)
+
+$(Resource("https://raw.githubusercontent.com/el-uhu/aypt-notebooks/main/notebooks/img/coin-geom.png", :width => 200))
 """
 
 # ╔═╡ 5121f91b-0c1e-468a-9e06-b7a1a8cdf2eb
 md"""
-| Parameter            | Value                                                       |
+| Variable             | Value                                                       |
 |----------------------|-------------------------------------------------------------|
 | $h$                  | $(@bind h Slider(0:0.01:2, default = 1, show_value = true)) |
 | $R$                  | $(@bind R Slider(0:0.01:4, default = 1, show_value = true))
@@ -76,10 +80,28 @@ md"""
 |---------------------------------|--------------------------------------------------|
 | $\eta = \frac{h}{R}$            | $(η = h/R)                                       |
 | $l= \sqrt{R^{2} + (h/2)^{2}}$   | $(l = sqrt(R^2 + (h/2)^2))                       |
+| $\alpha = atan(\eta / 2 )$      | $(α = atan(η/2))                                 |
+| $\beta = atan(2 / \eta )$       | $(β = atan(2/η))                                 |
 """
 
-# ╔═╡ c4c42415-3734-4ec2-877c-93c57760594a
-2^2
+# ╔═╡ 359934dc-cdea-43be-bef3-bdc585d7862f
+md"""
+### Model 1: Surface Area
+
+$p_{edge}(h,R) = \frac{2\pi R h}{2\pi R^{2} + 2\pi R h}$
+
+$p_{edge}(\eta) = \frac{\eta}{1 + \eta}$
+"""
+
+# ╔═╡ e524a1e5-d289-4030-9b19-2954e48f506e
+p_model1(η) = η / (1 + η)
+
+# ╔═╡ ea5be5bf-b32d-434d-b12f-6d7eb18211c0
+md"""
+### Model 2: Cross-sectional Length
+
+$$
+"""
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -177,7 +199,9 @@ uuid = "4ec0a83e-493e-50e2-b9ac-8f72acf5a8f5"
 # ╟─3fc52768-7b08-49a4-9e10-e18c3cb3101a
 # ╟─ca167561-18a4-4997-981d-db3fb481dadf
 # ╟─5121f91b-0c1e-468a-9e06-b7a1a8cdf2eb
-# ╠═9fe290ac-a97b-4b4f-a3c3-7f085e817697
-# ╠═c4c42415-3734-4ec2-877c-93c57760594a
+# ╟─9fe290ac-a97b-4b4f-a3c3-7f085e817697
+# ╟─359934dc-cdea-43be-bef3-bdc585d7862f
+# ╠═e524a1e5-d289-4030-9b19-2954e48f506e
+# ╠═ea5be5bf-b32d-434d-b12f-6d7eb18211c0
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
